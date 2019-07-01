@@ -1,7 +1,6 @@
-body{
-    background-color:  #000033;
+body {
+    background-color: #000033;
 }
-
 
 h1 {
     background: url('../ninja-logo.png') no-repeat center;
@@ -10,7 +9,7 @@ h1 {
 }
 
 .container {
-    background-color: #0c1512;
+    background-color: #0c1521;
     margin-bottom: 20px;
     padding-bottom: 15px;
 }
@@ -20,7 +19,7 @@ h1 {
 }
 
 .btn {
-    background-color: #f51521;
+    background-color: #f11421;
 }
 
 li:hover {
