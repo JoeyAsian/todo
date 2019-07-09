@@ -1,18 +1,19 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-    host:       'localhost',
-    user:       'admin',
-    password:   'student',
-    database:   'ninjatasker'
+    host     : 'localhost',
+    user     : 'admin',
+    password : 'student',
+    database : 'ninjatasker'
 });
 
 db.connect(function(err){
     if (err) throw err;
-    console.log("DB is connected ...")
-})
+    console.log("DB is connected ...");
+});
+
 
 const urlEncoded = bodyParser.urlencoded({extended: false})
 
@@ -33,35 +34,33 @@ app.use(express.static('./public'));
 // Get for tasks: returns all tasks
 app.get('/', (req, res) => {
     let sql = 'SELECT * FROM task';
-    db.query(sql, function (err, results,){
+    db.query(sql, function (err, results) {
         if (err) throw err;
         // rendering tasks view and passing taskToDo data
-        res.render('tasks',{taskToDo: results})
+        res.render('tasks', {taskToDo: results});
     });
-    
 });
 
 // Post for tasks: posting a task
 app.post('/tasks', urlEncoded, (req, res) => {
     let task = req.body
     let sql = 'INSERT INTO task SET ?';
-    db.query(sql,task, function (err, results){
+    db.query(sql, task, function (err, results) {
         if (err) throw err;
-        console.log(req.body)
+        // rendering tasks view and passing taskToDo data
+        console.log(results)
         res.redirect('/')
-    })
-// formatting for incoming data to add to my data set
-  let incomingItem = {};
-  incomingItem.taskItem = req.body.task;
-  dummyData.push(incomingItem);
-  
+    });
 });
 
 // Delete for task: deleting specify task
 app.delete("/tasks/:id", (req, res) => {
-    // deleteing item from data set
-    dummyData.splice(req.params.id, 1);
-    res.json(dummyData)
+    let sql = 'DELETE  FROM task WHERE ID=' + req.params.id;
+      db.query(sql,(err, result) =>{
+          if(err) throw err;
+          console.log(result);
+          res.json(result)
+      })
 });
 
 // Delete for task: deleting specific task
