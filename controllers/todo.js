@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 exports.allTodos =  (req, res) => {
+=======
+exports.allTodos = (req, res) => {
+>>>>>>> 5f92f0926e0a9e70ae2230b75d6f649f9a66f53b
     req.context.db.Task.findAll({
         attributes: ['id', 'taskItem']
     }).then(function(results){
@@ -7,6 +11,7 @@ exports.allTodos =  (req, res) => {
     }).catch(function(err){
         console.log(err);
         res.json(err);
+<<<<<<< HEAD
     })
 };   
     // console.log(req.context)
@@ -58,3 +63,29 @@ exports.removeTask = (req, res) => {
     //     console.log(result);
     //     res.json(result)
     // })
+=======
+    });
+}
+
+exports.addTask = (req, res) => {
+    req.context.db.Task.create({
+        taskItem: req.body.taskItem
+    }).then(function(){
+        res.redirect('/');
+    }).catch(function(err){
+        console.log(err);
+        res.json(err);
+    });
+}
+
+exports.removeTask = (req, res) => {
+    req.context.db.Task.destroy({
+        where: { id: req.params.id }
+    }).then(function(result){
+        res.json(result)
+    }).catch(function(err){
+        console.log(err);
+        res.json(err);
+    });
+}
+>>>>>>> 5f92f0926e0a9e70ae2230b75d6f649f9a66f53b

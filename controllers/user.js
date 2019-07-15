@@ -1,9 +1,15 @@
 exports.register = (req, res) => {
-    res.render('register')
+    res.render('register');
 }
-exports.login = (req, res) => {
-    res.render('login')
+
+exports.userLogin = (req, res) => {
+    res.render('login');
 }
-exports.profile = (req, res) => {
-    res.render('profile')
+
+exports.userProfile = (req, res) => {
+    res.render('profile');
+}
+
+exports.userLogout = (req, res) => {
+    res.redirect('/');
 }
