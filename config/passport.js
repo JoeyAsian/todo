@@ -22,3 +22,19 @@ passport.use(new LocalStrategy(
       });
     }
 ));
+// authenticate users to a cookie we must serialize the user session
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+// following request need there session to be deserialized
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+// exporting passport for our app to use it
+
+module.exports = passport;

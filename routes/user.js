@@ -4,11 +4,11 @@ const userController = require('../controllers/user')
 
 router.get( '/user/signup', userController.register );
 
-router.get('/user/login', userController.userLogin)
+router.get('/user/login', userController.userLogin);
 
-// router.post('/user/signup', userController)
+router.post('/user/signup', userController.signup);
 
-// router.post('/user/login', userController)
+router.post('/user/login',)
 
 router.get('/profile', userController.userProfile)
 
