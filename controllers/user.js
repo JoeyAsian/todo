@@ -26,9 +26,13 @@ exports.signup = (req, res) => {
         email: req.body.email,
         password: req.body.password,
     }).then(function () {
-        res.redirect('profile')
+        res.redirect('/profile')
     }).catch(function(err){
         console.log(err);
         res.json(err);
     })
+}
+
+exports.userSignin = (req, res) => {
+    
 }

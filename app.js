@@ -18,9 +18,6 @@ app.use( (req, res, next ) => {
     next();
 } )
 
-// routing manager
-app.use(routes);
-
 // setting template engine
 app.set("view engine","ejs");
 
@@ -30,6 +27,8 @@ app.use(session({ secret: "I love veros cohort 2", resave: true, saveUninitializ
 app.use(passport.initialize());
 app.use(passport.session());
 
+// routing manager
+app.use(routes);
 
 database.sequelize.sync().then(function(){
     app.listen(port, function(err){
