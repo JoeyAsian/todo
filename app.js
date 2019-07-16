@@ -37,4 +37,3 @@ database.sequelize.sync().then(function(){
         console.log('Server is live on port: ' + port)
     })
 });
-

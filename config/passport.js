@@ -7,7 +7,7 @@ const db = require('../models');
 // email and password
 
 passport.use(new LocalStrategy(
-    {usernameField: 'email'},
+    {  usernameField: 'email' },
     function(email, password, done) {
       db.User.findOne( { where: { email: email } } ).then( function(dbuser){
         // if there is no user with the provided email
@@ -24,19 +24,16 @@ passport.use(new LocalStrategy(
       });
     }
 ));
-// authenticate users to a cookie we must serialize the user session
 
+// to authenticate users to a cookie we must serialize the user session
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+    done(null, user);
+});
+  
+// following request need there session to be deserialize 
+passport.deserializeUser(function(user, done) {
+    done(null, user )
 });
 
-// following request need there session to be deserialized
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 // exporting passport for our app to use it
-
 module.exports = passport;
