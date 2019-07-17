@@ -3,7 +3,6 @@ const router  = express.Router();
 const todoController = require('../controllers/todo');
 
 // parsing form data
-const bodyParser = require('body-parser');
 const urlEncoded = bodyParser.urlencoded({extended: false})
 
 // ############### ROUTES ##############
@@ -12,7 +11,7 @@ const urlEncoded = bodyParser.urlencoded({extended: false})
 router.get( '/', todoController.allTodos );
 
 // Post for tasks: posting a task
-router.post( '/tasks', urlEncoded, todoController.addTask );
+router.post( '/tasks', todoController.addTask );
 
 // Delete for task: deleting specify task
 router.delete( "/tasks/:id", todoController.removeTask );
