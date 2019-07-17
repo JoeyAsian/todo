@@ -1,4 +1,4 @@
-
+const passport = require('../config/passport');
 
 // GET user/signup
 exports.register = (req, res) => {
@@ -17,7 +17,8 @@ exports.userProfile = (req, res) => {
 
 // GET for /logout
 exports.userLogout = (req, res) => {
-    res.redirect('/');
+    req.logout();
+    res.redirect('/user/login');
 }
 
 // POST /user/signup
@@ -34,7 +35,15 @@ exports.signup = (req, res) => {
 }
 
 // POST user/login
+<<<<<<< HEAD
 exports.userSignin = passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/user/login'
 });
+=======
+exports.userSignin = passport.authenticate('local', { 
+    successRedirect: '/profile',
+    failureRedirect: '/user/login' 
+});
+
+>>>>>>> 380ee75f960a42f98f00122865d13f157efe5bfb
