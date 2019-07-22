@@ -12,8 +12,12 @@ exports.userLogin = (req, res) => {
 
 // GET /profile
 exports.userProfile = (req, res) => {
+<<<<<<< HEAD
     res.render('profile');
     res.redirect('/')
+=======
+    res.render('profile', {currentUser: req.user});
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
 }
 
 // GET for /logout
@@ -25,7 +29,11 @@ exports.userLogout = (req, res) => {
 // POST /user/signup
 exports.signup = passport.authenticate('local-signup', {
     successRedirect: '/profile',
+<<<<<<< HEAD
     failureRedirect: '/user/signup'
+=======
+    failureRedirect: '/user/signup' 
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
 });
 
 // POST user/login

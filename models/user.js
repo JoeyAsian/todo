@@ -18,10 +18,17 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false
         },
         name: {
+<<<<<<< HEAD
             type: DataTypes: STRING
         },
         avatar: {
             type: DataTypes.STRING
+=======
+            type: DataTypes.STRING
+        },
+        avatar: {
+            type: DataTypes.STRING    
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
         }
     });
 

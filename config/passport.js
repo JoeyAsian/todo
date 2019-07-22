@@ -28,14 +28,24 @@ passport.use(new LocalStrategy(
 // for when a user signs up
 passport.use('local-signup', new LocalStrategy(
     {  usernameField: 'email',
+<<<<<<< HEAD
        passReqToCallBack: true }, //allow us to use the entire request coming fron our app
     function(email, password, done) {
+=======
+       passReqToCallback: true }, // allow us to use the entire request coming from our app},
+    function(req, email, password, done) {
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
       db.User.findOne( { where: { email: email } } ).then( function(dbuser){
         // to verify that the email is not in use
         if (dbuser) {
             return done(null, false, { message: 'Email is already taken.' } );
+<<<<<<< HEAD
         }else {
             // add my user to my database
+=======
+        } else  {
+            // add user to my database
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
             db.User.create({
                 email: email , 
                 password: password,
@@ -44,6 +54,7 @@ passport.use('local-signup', new LocalStrategy(
                 if (!newUser){
                     return done(null, false)
                 }
+<<<<<<< HEAD
 
                 if (newUser){
                     return done(null, newUser)
@@ -54,6 +65,15 @@ passport.use('local-signup', new LocalStrategy(
                 res.json(err);
             })
             return done(null, false, { message: 'Incorrect password.' } );
+=======
+                if (newUser){
+                    return done(null, newUser)
+                }
+            }).catch(function (err) {
+                console.log(err);
+                res.json(err);
+            })    
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
         }
       });
     }
@@ -61,6 +81,12 @@ passport.use('local-signup', new LocalStrategy(
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 94257e98085c5b1fc65ee70cb05dcb6a52fd303b
 // to authenticate users to a cookie we must serialize the user session
 passport.serializeUser(function(user, done) {
     done(null, user);
