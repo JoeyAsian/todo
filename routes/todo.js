@@ -2,11 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const todoController = require('../controllers/todo');
 
-<<<<<<< HEAD
-// parsing form data
-const urlEncoded = bodyParser.urlencoded({extended: false})
-=======
->>>>>>> 380ee75f960a42f98f00122865d13f157efe5bfb
 
 // ############### ROUTES ##############
 
