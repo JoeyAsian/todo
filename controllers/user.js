@@ -33,3 +33,10 @@ exports.userSignin = passport.authenticate('local', {
     failureRedirect: '/user/login' 
 });
 
+// get login/facebook
+exports.fblogin=
+
+// get /return
+exports.fbcallback = passport.authenticate('facebook', {
+failureRedirect: '/user/login',
+successRedirect: '/profile',} )
